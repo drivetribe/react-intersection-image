@@ -1,27 +1,14 @@
 import React from 'react';
-import { IntersectionElement, IntersectionRoot } from '../src';
+import IntersectionImage from '../src';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-const IntersectionElementDemo = () => (
+const IntersectionImageDemo = () => (
   <div style={{ paddingTop: '200vh' }}>
-    <IntersectionElement onChange={console.log}>
-      <div style={{ width: '300px', height: '300px', background: 'red' }} />
-    </IntersectionElement>
+    <IntersectionImage src="https://user-images.githubusercontent.com/7850794/34434126-db688af8-ec7b-11e7-9527-a7a2c37edc3b.png" style={{ transition: 'opacity 1000ms linear' }} />
   </div>
 );
 
-const IntersectionElementRootDemo = () => (
-  <IntersectionRoot viewport>
-    <div style={{ paddingTop: '200vh' }}>
-      <IntersectionElement onChange={console.log}>
-        <div style={{ width: '300px', height: '300px', background: 'red' }} />
-      </IntersectionElement>
-    </div>
-  </IntersectionRoot>
-);
-
-storiesOf('React Intersection', module)
-  .add('IntersectionElement without root', IntersectionElementDemo)
-  .add('IntersectionElement with root', IntersectionElementRootDemo);
+storiesOf('React Intersection Image', module)
+  .add('Demo', IntersectionImageDemo);
