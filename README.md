@@ -34,9 +34,9 @@ export default () => (
 
 ### Add a fade transition
 
-By default, `IntersectionImage` simply switches `opacity` from `0` to `1`.
+`IntersectionImage` switches `opacity` from `0` to `1` when the image has loaded.
 
-You can add a fade in animation by simply adding a CSS `transition` rule in the method of your choosing. For instance:
+You can add a fade in animation by adding a CSS `transition` rule via the method of your choosing. For instance:
 
 ```javascript
 // `style` prop
@@ -61,6 +61,12 @@ We can create a new `IntersectionRoot` on a different parent element or with a d
 import { IntersectionRoot, IntersectionElement } from 'react-intersection';
 import IntersectionImage from 'react-intersection-image';
 
+const LoadMore = ({ onChange }) => (
+  <IntersectionElement onChange={onChange}>
+    <li>{`Loading...`}</li>
+  </IntersectionElement>
+);
+
 export default ({ images, loadMoreImages }) => (
   <IntersectionRoot margin="0px 200px 0px 0px">
     <ul>
@@ -69,9 +75,7 @@ export default ({ images, loadMoreImages }) => (
           <IntersectionImage src={src} />
         </li>
       ))}
-      <IntersectionElement onChange={loadMoreImages}>
-        <li>{`Loading...`}</li>
-      </IntersectionElement>
+      <LoadMore onChange={loadMoreImages} />
     </ul>
   </IntersectionRoot>
 );
