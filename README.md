@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-intersection-image.svg?style=flat-square)](https://www.npmjs.com/package/react-intersection) [![npm](https://img.shields.io/npm/dm/react-intersection-image.svg?style=flat-square)](https://www.npmjs.com/package/react-intersection) 
 
-**React Intersection Image** is a tiny lazy-loaded image component, built with [React Intersection](https://github.com/drivetribe/react-intersection-image).
+**React Intersection Image** is a tiny lazy-loaded image component, built with [React Intersection](https://github.com/drivetribe/react-intersection).
 
 It uses the Intersection Observer API, so it's performant. It uses React Intersection, so it's tiny too!
 
