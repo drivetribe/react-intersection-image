@@ -6,6 +6,8 @@
 
 It uses the Intersection Observer API, so it's performant. It uses React Intersection, so it's tiny too!
 
+By default, `react-intersection-image` uses `HTMLImageElement.decode()` to decode the image first before being rendered.
+
 ## Contents
 
 - [Install](#install)
@@ -53,7 +55,7 @@ const Image = styled(IntersectionImage)`
 
 ### Define a new `IntersectionRoot`
 
-Because `IntersectionImage` is built on [React Intersection](https://github.com/drivetribe/react-intersection-image), it will subscribe to the nearest parent `IntersectionRoot` (or the viewport if none exists).
+Because `IntersectionImage` is built on [React Intersection](https://github.com/drivetribe/react-intersection), it will subscribe to the nearest parent `IntersectionRoot` (or the viewport if none exists).
 
 We can create a new `IntersectionRoot` on a different parent element or with a different `margin`, and share that with other `IntersectionElement`s:
 
@@ -80,7 +82,3 @@ export default ({ images, loadMoreImages }) => (
   </IntersectionRoot>
 );
 ```
-
-## Social
-
-Follow DriveTribe Engineering on: [Medium](https://medium.com/drivetribe-engineering) | [Twitter](https://twitter.com/drivetribetech)
