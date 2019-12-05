@@ -1,36 +1,66 @@
-import React, { createRef } from "react";
-import { IntersectionElement } from "react-intersection";
+// @flow
+import React, { createRef } from 'react';
+import { IntersectionElement } from 'react-intersection';
 
-export default class IntersectionImage extends React.PureComponent {
+type Props = {
+  src?: string,
+  style: Object
+};
+
+type State = {
+  isLoaded: boolean
+};
+
+export default class IntersectionImage extends React.PureComponent<
+  Props,
+  State
+> {
   static defaultProps = {
-    role: "presentation",
-    alt: ""
+    role: 'presentation',
+    alt: ''
   };
 
   state = {
     isLoaded: false
   };
 
-  image;
-  imgRef = createRef();
+  componentDidUpdate(prevProps: Props): void {
+    if (prevProps.src !== this.props.src) {
+      this.setState({ isLoaded: false }, this.loadImage);
+    }
+  }
 
-  checkIsIntersecting = ({ isIntersecting }) => {
+  componentWillUnmount(): void {
+    this.unloadImage();
+  }
+
+  image: ?Image;
+  imgRef = createRef<HTMLImageElement>();
+
+  checkIsIntersecting = ({ isIntersecting }: IntersectionObserverEntry) => {
     if (isIntersecting) {
       this.loadImage();
     }
   };
 
-  imgOnLoad = () => this.setState({ isLoaded: true });
+  onLoad = () => {
+    if (this.imgRef.current && this.props.src) {
+      this.imgRef.current.src = this.props.src;
+      this.setState({ isLoaded: true });
+    }
+  };
 
-  onLoad = () => (this.imgRef.src = this.props.src);
-
-  onError = () => (this.imgRef.src = null);
+  onError = () => {
+    if (this.imgRef.current) {
+      this.setState({ isLoaded: false });
+    }
+  };
 
   loadImage = () => {
     this.image = new Image();
-    this.image.src = this.props.src;
+    this.image.src = this.props.src ? this.props.src : '';
 
-    if ("decode" in this.image) {
+    if (this.image.decode) {
       this.image
         .decode()
         .then(this.onLoad)
@@ -40,16 +70,24 @@ export default class IntersectionImage extends React.PureComponent {
     }
   };
 
+  unloadImage = () => {
+    if (this.image) {
+      this.image.onerror = null;
+      this.image.onload = null;
+      this.image.src = '';
+      delete this.image;
+    }
+  };
+
   render() {
     const { isLoaded } = this.state;
-    const { onChange, src, style, ...props } = this.props;
+    const { style, ...props } = this.props;
     const opacity = isLoaded ? 1 : 0;
 
     return (
       <IntersectionElement onChange={this.checkIsIntersecting} once>
         <img
           {...props}
-          onLoad={this.imgOnLoad}
           ref={this.imgRef}
           src={null}
           style={{ ...style, opacity }}
