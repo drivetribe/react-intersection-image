@@ -1,6 +1,6 @@
 {
   "name": "react-intersection-image",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A lazy-loaded image component built with React Intersection",
   "main": "./lib/index.js",
   "files": [
@@ -42,7 +42,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepublishonly": "npm run flow && npm run build"
+    "prepublishOnly": "npm run flow && npm run build"
   },
   "repository": {
     "type": "git",

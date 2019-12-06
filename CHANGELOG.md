@@ -2,6 +2,12 @@
 
 React Intersection adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1] 2019-12-06
+
+### Fixes
+
+- npm prepublishOnly script
+
 ## [2.0.0] 2019-12-05
 
 - Updated dependencies
