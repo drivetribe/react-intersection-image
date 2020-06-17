@@ -2,6 +2,12 @@
 
 React Intersection adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0] 2020-06-17
+
+- Added support and lazyloading for `srcset`
+- Bump websocket-extensions from 0.1.3 to 0.1.4
+- Bump dependency packages
+
 ## [2.0.2] 2019-12-06
 
 ### Fixes

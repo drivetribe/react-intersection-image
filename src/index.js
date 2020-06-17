@@ -4,6 +4,7 @@ import { IntersectionElement } from 'react-intersection';
 
 type Props = {
   src?: string,
+  srcset?: string,
   style: Object
 };
 
@@ -46,6 +47,11 @@ export default class IntersectionImage extends React.PureComponent<
   onLoad = () => {
     if (this.imgRef.current && this.props.src) {
       this.imgRef.current.src = this.props.src;
+
+      if (this.props.srcset) {
+        this.imgRef.current.srcset = this.props.srcset;
+      }
+
       this.setState({ isLoaded: true });
     }
   };
@@ -58,9 +64,10 @@ export default class IntersectionImage extends React.PureComponent<
 
   loadImage = () => {
     this.image = new Image();
-    this.image.src = this.props.src ? this.props.src : '';
 
     if (this.image.decode) {
+      this.image.src = this.props.src ? this.props.src : '';
+      this.image.srcset = this.props.srcset ? this.props.srcset : '';
       this.image
         .decode()
         .then(this.onLoad)
@@ -75,13 +82,15 @@ export default class IntersectionImage extends React.PureComponent<
       this.image.onerror = null;
       this.image.onload = null;
       this.image.src = '';
+      this.image.srcset = '';
       delete this.image;
     }
   };
 
   render() {
     const { isLoaded } = this.state;
-    const { style, ...props } = this.props;
+    // eslint-disable-next-line no-unused-vars
+    const { src, srcset, style, ...props } = this.props;
     const opacity = isLoaded ? 1 : 0;
 
     return (
