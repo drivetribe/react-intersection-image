@@ -57,23 +57,29 @@ export default class IntersectionImage extends React.PureComponent<
   };
 
   onError = () => {
-    if (this.imgRef.current) {
+    if (this.imgRef.current && this.state.isLoaded) {
       this.setState({ isLoaded: false });
     }
+
+    // proceed to load image the old fashion way
+    // (most likely Firefox not liking decode)
+    this.onLoad();
   };
 
   loadImage = () => {
     this.image = new Image();
 
+    this.image.src = this.props.src ? this.props.src : '';
+    this.image.srcset = this.props.srcset ? this.props.srcset : '';
+
     if (this.image.decode) {
-      this.image.src = this.props.src ? this.props.src : '';
-      this.image.srcset = this.props.srcset ? this.props.srcset : '';
       this.image
         .decode()
         .then(this.onLoad)
         .catch(this.onError);
     } else {
-      this.onLoad();
+      this.image.onload = this.onLoad;
+      this.image.onerror = this.onError;
     }
   };
 

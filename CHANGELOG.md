@@ -2,6 +2,16 @@
 
 React Intersection adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.1] 2020-06-18
+
+### Fixes
+
+- Firefox browsers always fails to load image when decoding srcset
+
+### Fixes
+
+- Bump dependency versions to use new context api
+
 ## [2.1.0] 2020-06-17
 
 - Added support and lazyloading for `srcset`
