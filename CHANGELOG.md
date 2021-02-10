@@ -2,7 +2,11 @@
 
 React Intersection adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.1.1] 2020-06-18
+## [2.1.2] 2021-02-10
+
+### Fixes
+
+- Bump dependency versions
 
 ### Fixes
 

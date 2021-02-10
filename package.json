@@ -1,20 +1,20 @@
 {
   "name": "react-intersection-image",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A lazy-loaded image component built with React Intersection",
   "main": "./lib/index.js",
   "files": [
     "lib"
   ],
   "dependencies": {
-    "react-intersection": "^2.0.1"
+    "react-intersection": "^2.0.3"
   },
   "peerDependencies": {
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
+    "@babel/cli": "^7.12.13",
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
