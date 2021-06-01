@@ -1,6 +1,0 @@
-[ignore]
-.*/_tests/.*
-.*/lib/.*
-
-[libs]
-flow-typed

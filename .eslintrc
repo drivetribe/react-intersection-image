@@ -4,9 +4,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:flowtype/recommended",
     "prettier",
-    "prettier/flowtype",
     "prettier/react"
   ],
   "settings": {
